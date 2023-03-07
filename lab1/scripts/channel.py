@@ -81,8 +81,7 @@ class Channel:
                 return "Request timed out."
     
     def send_packet(self):
-        icmp = getprotobyname("icmp")
-        sock = socket(AF_INET, SOCK_RAW, icmp)
+        sock = socket(AF_INET, SOCK_RAW, IPPROTO_ICMP)
         sock.sendto(self.buffer.get(), (self.destination_address, 1))
         sock.close()
     
